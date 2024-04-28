@@ -3,7 +3,7 @@
 
 template <typename T>
 struct Item{
-    unsigned int chave;
+    unsigned int chave = 0U;
     T valor;
 };
 
@@ -44,15 +44,28 @@ class Vetor{
             return chave_max;
         }
 
-        void preencherValoresAleatoriamente(unsigned int n = 0){
+        void preencherValoresAleatoriamente(){
             for(unsigned int i = 0; i < tamanho; ++i){
-                valores[i].valor = (n!=0) ? (T) (std::rand()%n) : (T) std::rand();
+                valores[i].valor = (T) std::rand();
+            }
+        }
+        void preencherValoresComString(std::string str) {
+            for(unsigned int i = 0; i < tamanho; ++i){
+                valores[i].valor = (T) str;
             }
         }
 
-        void preencherChavesAleatoriamente(unsigned int n = 0){
+        void preencherChavesAleatoriamente(){
             for(unsigned int i = 0; i < tamanho; ++i){
-                valores[i].chave = (n!=0) ? std::rand()%n : std::rand();
+                valores[i].chave = (unsigned int) std::rand();
+            }
+        }
+
+         void preencherChavesComRepeticao(unsigned int valores_possiveis){
+            if(valores_possiveis == 0) throw std::logic_error("Chave não pode assumir 0 valores possíveis");
+
+            for(unsigned int i = 0; i < tamanho; ++i){
+                valores[i].chave = (unsigned int) std::rand()%valores_possiveis;
             }
         }
         void preencherChavesSequencialmente(){

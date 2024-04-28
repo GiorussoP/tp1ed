@@ -14,7 +14,7 @@ LIBS :=
 LINKING :=
 
 ## saída
-EXEC_NAME := tp1.exe
+EXEC_NAME := testes.exe
 
 
 ## FUNCIONAMENTO

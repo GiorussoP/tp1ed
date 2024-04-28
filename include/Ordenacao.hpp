@@ -84,21 +84,56 @@ class Ordenacao{
                 }
             } while (i <= j);  
         }
+
+        template <typename T>
+        static void particaoRadix(Vetor<T>& v, long int i_comeco,long int i_fim, unsigned int k) {
+            if (i_fim <= i_comeco || k >= 32) return;
+            long int i = i_comeco;
+            long int j = i_fim;
+
+            while (i!=j) {
+                while (getBit(v[i].chave,k) == 0 && i < j) ++i; 
+                while (getBit(v[j].chave,k) == 1 && i < j) --j;
+                trocar(v[i],v[j]);
+            }
+            if (getBit(v[i_fim].chave,k) == 0) ++j;
+
+            particaoRadix(v,i_comeco,j-1,k+1);
+            particaoRadix(v,j,i_fim,k+1);
+        }
+
+        //Retorna o valor (zero ou um) do enésimo bit de um unsigned int da esquerda para a direita (indice vai de 0 a 31) 
+        static unsigned int getBit(unsigned int n,unsigned int indice){
+            if (indice > sizeof(unsigned int)*8-1) throw std::logic_error("Unsigned int não tem mais de 32 bits!");
+
+            return (n >> (31 - indice)) & 1U;
+        }
+    
+        static void imprimirBinario(unsigned int n) {
+            for (int i = 0; i < 32; ++i){
+                std::cout<<getBit(n,i);
+            }
+            std::cout<<std::endl;
+        }
+        
     public:
         template <typename T>
         static void bubbleSort(Vetor<T>& V){
-
             unsigned int tamanho = V.getTamanho();
+            bool trocou = false;
 
             for(unsigned int i = 0; i < tamanho-1; ++i){
-
+                
+                trocou = 0;
                 for(unsigned int j = 1; j < tamanho-i; ++j){
 
                     if(V[j].chave < V[j-1].chave){
 
                         trocar(V[j-1],V[j]);
+                        trocou = 1;
                     }
                 }
+                if(!trocou) break;
             }
         }
 
@@ -197,22 +232,101 @@ class Ordenacao{
 
         template <typename T>
         static void countingSort(Vetor<T>& v, unsigned int maior_chave) {
-            //lembrar de desconsiderar o tempo de obtenção da maior chave no teste
+
             unsigned int tam_v = v.getTamanho();
             unsigned int n_max_chaves = maior_chave + 1;
 
+            //alocação do vetor de itens
+            T * aux = new T[n_max_chaves*tam_v];
+            //alocação do vetor de chaves
+            unsigned int * v_chaves = new unsigned int[n_max_chaves] {0};
 
-            //alocação do vetor de chaves e do vetor de itens
-            Item<T> * aux = new Item<T>[n_max_chaves*tam_v];
+            //organização do vetor auxiliar e do vetor de chaves (CONSOME BASTANTE MEMÓRIA)
+            for (unsigned int i = 0; i < tam_v; ++i) {
 
-            unsigned int * v_chaves= new unsigned int[n_max_chaves];
+                unsigned int chave = v[i].chave;
 
+                aux[tam_v*chave + v_chaves[chave]] = v[i].valor;
+
+                ++v_chaves[chave];
+            }
+
+
+
+            //remontagem do vetor
+            unsigned int k = 0;
+
+            for (unsigned int i = 0; i < n_max_chaves; ++i) {
+
+                unsigned int n_chave = v_chaves[i];
+
+                if(n_chave > 0) {
+
+                    for (unsigned int j = 0; j < n_chave; ++j) {
+
+                        v[k].chave = i;
+                        v[k].valor = aux[tam_v*i +j];
+
+                        ++k;
+                    }
+                }
+                
+            }
+
+
+            // desalocação de memória
             delete[] aux;
             delete[] v_chaves;
         }
 
-        //Counting Sort
-        //Bucket Sort
+        template <typename T>
+        static void bucketSort(Vetor<T>& v, unsigned int k_buckets) {
+            if(k_buckets == 0) throw std::logic_error("Não podem existir zero baldes");
+
+            unsigned int tamanho = v.getTamanho();
+            unsigned int max = v.getMaiorChave();
+            unsigned int tamanho_baldes = max / k_buckets + 1;
+
+            //criação do vetor auxiliar que representa os baldes
+            Vetor<T> aux(tamanho*k_buckets);
+
+            //alocação do vetor de chaves
+            unsigned int * q_itens_balde = new unsigned int[k_buckets] {0};
+
+            //colocando elementos nos baldes
+            for (unsigned int i = 0; i < tamanho; ++ i){
+                unsigned int qual = v[i].chave/tamanho_baldes;
+
+                aux[qual * tamanho + q_itens_balde[qual]] = v[i];
+                ++q_itens_balde[qual];
+            }
+
+            //ordenando elementos de cada balde
+            for (unsigned int i = 0; i < k_buckets; ++ i) {
+                if(q_itens_balde[i] > 0){
+                    quickSort(aux,i*tamanho,i*tamanho + q_itens_balde[i]-1);
+                }
+            }
+
+            //copiando valores pro vetor original
+            unsigned int k = 0;
+            for (unsigned int i = 0; i < k_buckets; ++i) {
+                unsigned int valores_balde =  q_itens_balde[i];
+                if (valores_balde > 0) {
+                    for(unsigned int j = 0; j < valores_balde; ++ j) {
+                         v[k] = aux[i*tamanho + j];
+                         ++k;
+                    }
+                }
+            }
+
+            delete[] q_itens_balde;
+        }
+
+        template <typename T>
+        static void radixSort(Vetor<T>& v) {
+            particaoRadix(v,0,v.getTamanho()-1,0);
+        }
         //Radix Sort
         
 };
