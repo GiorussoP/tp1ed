@@ -5,71 +5,103 @@
 #include "TestesAlg.hpp"
 
 int main(){
+    unsigned int n_max;
+    unsigned int max_bytes;
+    unsigned int intervalo = 0;
+    std::cout<<"Numero maximo de elementos:"<<std::endl;
+    std::cin>>n_max;
 
-    
-    Testes::variarTamanhoItem(Algoritmo::bubble,ConfiguracaoInicial::inversamenteOrdenado,5000000,100,TipoFuncao::quadratica);
+    std::cout<<"Numero maximo de bytes:"<<std::endl;
+    std::cin>>max_bytes;
 
-
-    /*
-    for (int i = 0; i < 9; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            Testes::variarTamanhoItem((Algoritmo)i,(ConfiguracaoInicial) j,5000000,100,TipoFuncao::linear);
-        }
+    while (intervalo ==0) {
+        std::cout<<"Intervalo dos testes:"<<std::endl;
+        std::cin>>intervalo;
     }
-    */
+
+
+    /* BUBBLE */
+
+    Testes::variarTamanhoVetor(Algoritmo::bubble,ConfiguracaoInicial::aleatorio,n_max,intervalo,TipoFuncao::quadratica);
+    Testes::variarTamanhoVetor(Algoritmo::bubble,ConfiguracaoInicial::ordenado,n_max,intervalo,TipoFuncao::linear);
+    Testes::variarTamanhoVetor(Algoritmo::bubble,ConfiguracaoInicial::inversamenteOrdenado,n_max,intervalo,TipoFuncao::quadratica);
+    Testes::variarTamanhoVetor(Algoritmo::bubble,ConfiguracaoInicial::repeticaoDeChaves,n_max,intervalo,TipoFuncao::quadratica);
+    
+    Testes::variarTamanhoItem(Algoritmo::bubble,ConfiguracaoInicial::inversamenteOrdenado,max_bytes,intervalo,TipoFuncao::quadratica);
+
+    /* SELECTION */
+
+    Testes::variarTamanhoVetor(Algoritmo::selection,ConfiguracaoInicial::aleatorio,n_max,intervalo,TipoFuncao::quadratica);
+    Testes::variarTamanhoVetor(Algoritmo::selection,ConfiguracaoInicial::ordenado,n_max,intervalo,TipoFuncao::quadratica);
+    Testes::variarTamanhoVetor(Algoritmo::selection,ConfiguracaoInicial::inversamenteOrdenado,n_max,intervalo,TipoFuncao::quadratica);
+    Testes::variarTamanhoVetor(Algoritmo::selection,ConfiguracaoInicial::repeticaoDeChaves,n_max,intervalo,TipoFuncao::quadratica);
+
+    Testes::variarTamanhoItem(Algoritmo::selection,ConfiguracaoInicial::inversamenteOrdenado,max_bytes,intervalo,TipoFuncao::quadratica);
+
+    /* INSERTION */
+
+    Testes::variarTamanhoVetor(Algoritmo::insertion,ConfiguracaoInicial::aleatorio,n_max,intervalo,TipoFuncao::quadratica);
+    Testes::variarTamanhoVetor(Algoritmo::insertion,ConfiguracaoInicial::ordenado,n_max,intervalo,TipoFuncao::linear);
+    Testes::variarTamanhoVetor(Algoritmo::insertion,ConfiguracaoInicial::inversamenteOrdenado,n_max,intervalo,TipoFuncao::quadratica);
+    Testes::variarTamanhoVetor(Algoritmo::insertion,ConfiguracaoInicial::repeticaoDeChaves,n_max,intervalo,TipoFuncao::quadratica);
+
+    Testes::variarTamanhoItem(Algoritmo::insertion,ConfiguracaoInicial::inversamenteOrdenado,max_bytes,intervalo,TipoFuncao::quadratica);
+
+    /* MERGE */
+
+    Testes::variarTamanhoVetor(Algoritmo::merge,ConfiguracaoInicial::aleatorio,n_max,intervalo,TipoFuncao::nlogn);
+    Testes::variarTamanhoVetor(Algoritmo::merge,ConfiguracaoInicial::ordenado,n_max,intervalo,TipoFuncao::nlogn);
+    Testes::variarTamanhoVetor(Algoritmo::merge,ConfiguracaoInicial::inversamenteOrdenado,n_max,intervalo,TipoFuncao::nlogn);
+    Testes::variarTamanhoVetor(Algoritmo::merge,ConfiguracaoInicial::repeticaoDeChaves,n_max,intervalo,TipoFuncao::nlogn);
+
+    Testes::variarTamanhoItem(Algoritmo::merge,ConfiguracaoInicial::inversamenteOrdenado,max_bytes,intervalo,TipoFuncao::linear);
+
+    /* QUICK */
+
+    Testes::variarTamanhoVetor(Algoritmo::quick,ConfiguracaoInicial::aleatorio,n_max,intervalo,TipoFuncao::nlogn);
+    Testes::variarTamanhoVetor(Algoritmo::quick,ConfiguracaoInicial::ordenado,n_max,intervalo,TipoFuncao::nlogn);
+    Testes::variarTamanhoVetor(Algoritmo::quick,ConfiguracaoInicial::inversamenteOrdenado,n_max,intervalo,TipoFuncao::nlogn);
+    Testes::variarTamanhoVetor(Algoritmo::quick,ConfiguracaoInicial::repeticaoDeChaves,n_max,intervalo,TipoFuncao::nlogn);
+
+    Testes::variarTamanhoItem(Algoritmo::quick,ConfiguracaoInicial::inversamenteOrdenado,max_bytes,intervalo,TipoFuncao::linear);
+
+    /* SHELL */
+
+    Testes::variarTamanhoVetor(Algoritmo::shell,ConfiguracaoInicial::aleatorio,n_max,intervalo,TipoFuncao::quadratica);
+    Testes::variarTamanhoVetor(Algoritmo::shell,ConfiguracaoInicial::ordenado,n_max,intervalo,TipoFuncao::quadratica);
+    Testes::variarTamanhoVetor(Algoritmo::shell,ConfiguracaoInicial::inversamenteOrdenado,n_max,intervalo,TipoFuncao::quadratica);
+    Testes::variarTamanhoVetor(Algoritmo::shell,ConfiguracaoInicial::repeticaoDeChaves,n_max,intervalo,TipoFuncao::quadratica);
 
     
+    Testes::variarTamanhoItem(Algoritmo::shell,ConfiguracaoInicial::inversamenteOrdenado,max_bytes,intervalo,TipoFuncao::linear);
 
-     /*
-    int n_maximo;
-    std::cout<<"Digite numero de testes que se quer realizar para cada algoritmo:"<<std::endl;
-    std::cin>>n_maximo;
+    /* COUNTING */
 
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::bubbleSort,"BubbleA",n_maximo,ConfiguracaoInicial::aleatorio);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::bubbleSort,"BubbleO",n_maximo,ConfiguracaoInicial::ordenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::bubbleSort,"BubbleI",n_maximo,ConfiguracaoInicial::inversamenteOrdenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::bubbleSort,"BubbleR",n_maximo,ConfiguracaoInicial::repeticaoDeChaves);
+    Testes::variarTamanhoVetor(Algoritmo::counting,ConfiguracaoInicial::aleatorio,n_max,intervalo,TipoFuncao::linear);
+    Testes::variarTamanhoVetor(Algoritmo::counting,ConfiguracaoInicial::ordenado,n_max,intervalo,TipoFuncao::linear);
+    Testes::variarTamanhoVetor(Algoritmo::counting,ConfiguracaoInicial::inversamenteOrdenado,n_max,intervalo,TipoFuncao::linear);
+    Testes::variarTamanhoVetor(Algoritmo::counting,ConfiguracaoInicial::repeticaoDeChaves,n_max,intervalo,TipoFuncao::linear);
    
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::insertionSort,"InsertionA",n_maximo,ConfiguracaoInicial::aleatorio);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::insertionSort,"InsertionO",n_maximo,ConfiguracaoInicial::ordenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::insertionSort,"InsertionI",n_maximo,ConfiguracaoInicial::inversamenteOrdenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::insertionSort,"InsertionR",n_maximo,ConfiguracaoInicial::repeticaoDeChaves);
 
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::selectionSort,"SelectionA",n_maximo,ConfiguracaoInicial::aleatorio);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::selectionSort,"SelectionO",n_maximo,ConfiguracaoInicial::ordenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::selectionSort,"SelectionI",n_maximo,ConfiguracaoInicial::inversamenteOrdenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::selectionSort,"SelectionR",n_maximo,ConfiguracaoInicial::repeticaoDeChaves);
+    Testes::variarTamanhoItem(Algoritmo::counting,ConfiguracaoInicial::inversamenteOrdenado,max_bytes,intervalo,TipoFuncao::linear);
 
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::shellSort,"ShellA",n_maximo,ConfiguracaoInicial::aleatorio);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::shellSort,"ShellO",n_maximo,ConfiguracaoInicial::ordenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::shellSort,"ShellI",n_maximo,ConfiguracaoInicial::inversamenteOrdenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::shellSort,"ShellR",n_maximo,ConfiguracaoInicial::repeticaoDeChaves);
+    /* BUCKET - Baldes de tamanho raiz de n */ 
 
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::mergeSort,"MergeA",n_maximo,ConfiguracaoInicial::aleatorio);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::mergeSort,"MergeO",n_maximo,ConfiguracaoInicial::ordenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::mergeSort,"MergeI",n_maximo,ConfiguracaoInicial::inversamenteOrdenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::mergeSort,"MergeR",n_maximo,ConfiguracaoInicial::repeticaoDeChaves);
+    Testes::variarTamanhoVetor(Algoritmo::bucket,ConfiguracaoInicial::aleatorio,n_max,intervalo,TipoFuncao::n_15);
+    Testes::variarTamanhoVetor(Algoritmo::bucket,ConfiguracaoInicial::ordenado,n_max,intervalo,TipoFuncao::n_15);
+    Testes::variarTamanhoVetor(Algoritmo::bucket,ConfiguracaoInicial::inversamenteOrdenado,n_max,intervalo,TipoFuncao::n_15);
+    Testes::variarTamanhoVetor(Algoritmo::bucket,ConfiguracaoInicial::repeticaoDeChaves,n_max,intervalo,TipoFuncao::n_15);
 
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::quickSort,"QuickA",n_maximo,ConfiguracaoInicial::aleatorio);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::quickSort,"QuickO",n_maximo,ConfiguracaoInicial::ordenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::quickSort,"QuickI",n_maximo,ConfiguracaoInicial::inversamenteOrdenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::quickSort,"QuickR",n_maximo,ConfiguracaoInicial::repeticaoDeChaves);
+    Testes::variarTamanhoItem(Algoritmo::bucket,ConfiguracaoInicial::inversamenteOrdenado,max_bytes,intervalo,TipoFuncao::linear);
 
-    Testes::testarCounting(Ordenacao::countingSort,n_maximo,ConfiguracaoInicial::aleatorio);
-    Testes::testarCounting(Ordenacao::countingSort,n_maximo,ConfiguracaoInicial::ordenado);
-    Testes::testarCounting(Ordenacao::countingSort,n_maximo,ConfiguracaoInicial::inversamenteOrdenado);
-    Testes::testarCounting(Ordenacao::countingSort,n_maximo,ConfiguracaoInicial::repeticaoDeChaves);
-    
-    Testes::testarBucket(Ordenacao::bucketSort,n_maximo,ConfiguracaoInicial::aleatorio);
-    Testes::testarBucket(Ordenacao::bucketSort,n_maximo,ConfiguracaoInicial::ordenado);
-    Testes::testarBucket(Ordenacao::bucketSort,n_maximo,ConfiguracaoInicial::inversamenteOrdenado);
-    Testes::testarBucket(Ordenacao::bucketSort,n_maximo,ConfiguracaoInicial::repeticaoDeChaves);
+    /* RADIX - considerando o número total de bits sempre 32 */
 
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::radixSort,"RadixA",n_maximo,ConfiguracaoInicial::aleatorio);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::radixSort,"RadixO",n_maximo,ConfiguracaoInicial::ordenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::radixSort,"RadixI",n_maximo,ConfiguracaoInicial::inversamenteOrdenado);
-    Testes::testarAlgoritmoOrdenacao(Ordenacao::radixSort,"RadixR",n_maximo,ConfiguracaoInicial::repeticaoDeChaves);
+    Testes::variarTamanhoVetor(Algoritmo::radix,ConfiguracaoInicial::aleatorio,n_max,intervalo,TipoFuncao::linear);
+    Testes::variarTamanhoVetor(Algoritmo::radix,ConfiguracaoInicial::ordenado,n_max,intervalo,TipoFuncao::linear);
+    Testes::variarTamanhoVetor(Algoritmo::radix,ConfiguracaoInicial::inversamenteOrdenado,n_max,intervalo,TipoFuncao::linear);
+    Testes::variarTamanhoVetor(Algoritmo::radix,ConfiguracaoInicial::repeticaoDeChaves,n_max,intervalo,TipoFuncao::linear);
+   
+    Testes::variarTamanhoItem(Algoritmo::radix,ConfiguracaoInicial::inversamenteOrdenado,max_bytes,intervalo,TipoFuncao::linear);
 
-    */
     return 0;
 }

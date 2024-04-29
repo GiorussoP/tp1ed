@@ -14,12 +14,6 @@ enum class ConfiguracaoInicial {
     repeticaoDeChaves
 };
 
-enum class TipoFuncao {
-    linear,
-    quadratica,
-    nlogn
-};
-
 enum class Algoritmo {
     bubble,
     insertion,
@@ -30,6 +24,14 @@ enum class Algoritmo {
     counting,
     bucket,
     radix
+};
+
+enum class TipoFuncao {
+    linear,         // ax + b
+    quadratica,     // ax² + bx + c
+    nlogn,          // a*x (log (b*x))
+    nlogn2,         // a*x (log (b*x))²
+    n_15            // a*n²/sqrt(n)
 };
 
 class Testes {

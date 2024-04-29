@@ -1,0 +1,36 @@
+
+
+*******************************************************************************
+Sun Apr 28 18:15:52 2024
+
+
+FIT:    data read from './quick_IO.nbytes'
+        format = z
+        #datapoints = 5000
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x+b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 4.1654667400e+14   0.00e+00  2.04e+05    1.000000e+00   1.000000e+00
+   8 5.4090142562e-07  -1.66e-01  2.04e-03    8.128132e-12   4.045365e-06
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 5.40901e-07
+rel. change during last iteration : -1.66354e-06
+
+degrees of freedom    (FIT_NDF)                        : 4998
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.04031e-05
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.08224e-10
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 8.12813e-12      +/- 1.019e-12    (12.54%)
+b               = 4.04537e-06      +/- 2.942e-07    (7.273%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.866  1.000 

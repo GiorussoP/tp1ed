@@ -497,6 +497,14 @@ void Testes::fazerGraficoN(Algoritmo alg,ConfiguracaoInicial conf,std::string no
             fx = "a*x*log(b*x)";
             params = "a,b";
             break;
+        case TipoFuncao::nlogn2:
+            fx = "a*x*(log(b*x))**2";
+            params = "a,b";
+            break;
+        case TipoFuncao::n_15:
+            fx = "a*x**1.5";
+            params = "a";
+            break;
         case TipoFuncao::quadratica:
             fx = "a*x**2 + b*x + c";
             params = "a,b,c";
@@ -582,6 +590,14 @@ void Testes::fazerGraficoT(Algoritmo alg,ConfiguracaoInicial conf,std::string no
         case TipoFuncao::nlogn:
             fx = "a*x*log(b*x)";
             params = "a,b";
+            break;
+        case TipoFuncao::nlogn2:
+            fx = "a*x*(log(b*x))**2";
+            params = "a,b";
+            break;
+        case TipoFuncao::n_15:
+            fx = "a*x**1.5";
+            params = "a";
             break;
         case TipoFuncao::quadratica:
             fx = "a*x**2 + b*x + c";

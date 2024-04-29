@@ -1,0 +1,38 @@
+
+
+*******************************************************************************
+Sun Apr 28 12:55:30 2024
+
+
+FIT:    data read from './insertion_A.tamvetor'
+        format = z
+        #datapoints = 10000
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x**2 + b*x + c
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 2.0010002324e+19   0.00e+00  2.58e+07    1.000000e+00   1.000000e+00   1.000000e+00
+  10 4.9029311498e-02  -3.96e-05  2.58e-03    1.714357e-10   5.758803e-07  -5.078577e-04
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 0.0490293
+rel. change during last iteration : -3.95937e-10
+
+degrees of freedom    (FIT_NDF)                        : 9997
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00221459
+variance of residuals (reduced chisquare) = WSSR/ndf   : 4.9044e-06
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 1.71436e-10      +/- 2.971e-12    (1.733%)
+b               = 5.7588e-07       +/- 3.069e-08    (5.329%)
+c               = -0.000507858     +/- 6.645e-05    (13.08%)
+
+correlation matrix of the fit parameters:
+                a      b      c      
+a               1.000 
+b              -0.968  1.000 
+c               0.745 -0.866  1.000 
